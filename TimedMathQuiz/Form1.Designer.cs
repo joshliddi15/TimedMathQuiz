@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             timeLabel = new Label();
             label1 = new Label();
             plusLeftLabel = new Label();
@@ -53,6 +54,7 @@
             dividedLeftLabel = new Label();
             startButton = new Button();
             timer1 = new System.Windows.Forms.Timer(components);
+            dateLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)sum).BeginInit();
             ((System.ComponentModel.ISupportInitialize)difference).BeginInit();
             ((System.ComponentModel.ISupportInitialize)product).BeginInit();
@@ -135,6 +137,7 @@
             sum.Name = "sum";
             sum.Size = new Size(243, 87);
             sum.TabIndex = 1;
+            sum.Enter += answer_Enter;
             // 
             // difference
             // 
@@ -144,6 +147,7 @@
             difference.Name = "difference";
             difference.Size = new Size(243, 87);
             difference.TabIndex = 2;
+            difference.Enter += answer_Enter;
             // 
             // label3
             // 
@@ -197,6 +201,7 @@
             product.Name = "product";
             product.Size = new Size(243, 87);
             product.TabIndex = 3;
+            product.Enter += answer_Enter;
             // 
             // label8
             // 
@@ -250,6 +255,7 @@
             quotient.Name = "quotient";
             quotient.Size = new Size(243, 87);
             quotient.TabIndex = 4;
+            quotient.Enter += answer_Enter;
             // 
             // label12
             // 
@@ -306,18 +312,29 @@
             startButton.Text = "Start the quiz";
             startButton.UseMnemonic = false;
             startButton.UseVisualStyleBackColor = true;
-            startButton.Click += startButton_Click;
+            startButton.Click += StartButton_Click;
             // 
             // timer1
             // 
-            timer1.Enabled = true;
             timer1.Interval = 1000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // dateLabel
+            // 
+            dateLabel.AutoSize = true;
+            dateLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateLabel.Location = new Point(12, 924);
+            dateLabel.Name = "dateLabel";
+            dateLabel.Size = new Size(409, 54);
+            dateLabel.TabIndex = 20;
+            dateLabel.Text = "Today is 23 Sept 2023";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(17F, 41F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1175, 987);
+            Controls.Add(dateLabel);
             Controls.Add(startButton);
             Controls.Add(quotient);
             Controls.Add(label12);
@@ -341,10 +358,11 @@
             Controls.Add(plusLeftLabel);
             Controls.Add(label1);
             Controls.Add(timeLabel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(7, 8, 7, 8);
             MaximizeBox = false;
             Name = "Form1";
-            Text = "Josh L's Math Quiz";
+            Text = "Josh Liddiard's Math Quiz";
             ((System.ComponentModel.ISupportInitialize)sum).EndInit();
             ((System.ComponentModel.ISupportInitialize)difference).EndInit();
             ((System.ComponentModel.ISupportInitialize)product).EndInit();
@@ -379,5 +397,6 @@
         private Label dividedLeftLabel;
         private Button startButton;
         private System.Windows.Forms.Timer timer1;
+        private Label dateLabel;
     }
 }
